@@ -1,0 +1,85 @@
+# ============================================
+# Configuração para Deploy na Render
+# ============================================
+# Arquivo: render.yaml
+# 
+# Este arquivo configura automaticamente o deploy na Render
+# Coloque na raiz do repositório Git
+# ============================================
+
+services:
+  # ============================================
+  # Web Service - LinkUp Full Stack
+  # ============================================
+  - type: web
+    name: linkup
+    env: docker
+    region: oregon  # Ou escolha: ohio, frankfurt, singapore
+    plan: starter   # Plano gratuito (pode mudar para: starter, standard, pro)
+    
+    # Build
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    
+    # Health check
+    healthCheckPath: /health
+    
+    # ============================================
+    # Variáveis de Ambiente
+    # ============================================
+    envVars:
+      # MongoDB Connection
+      - key: MONGO_URL
+        sync: false  # Definir manualmente no dashboard da Render
+      
+      - key: DB_NAME
+        value: linkup_production
+      
+      # JWT Secret (gerar valor seguro)
+      - key: JWT_SECRET_KEY
+        generateValue: true  # Render gera automaticamente
+      
+      # IA Key
+      - key: EMERGENT_LLM_KEY
+        sync: false  # Definir manualmente no dashboard da Render
+      
+      # CORS (permitir todas origens em produção - ajustar conforme necessário)
+      - key: CORS_ORIGINS
+        value: "*"
+      
+      # Frontend URL (será a URL gerada pela Render)
+      - key: REACT_APP_BACKEND_URL
+        value: https://linkup.onrender.com  # Ajustar para sua URL real
+      
+      # Seed Database (true para popular na primeira vez, false depois)
+      - key: SEED_DATABASE
+        value: "false"
+      
+      # Python
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    
+    # ============================================
+    # Auto Deploy
+    # ============================================
+    autoDeploy: true  # Deploy automático ao fazer push no Git
+    
+    # Branch principal
+    branch: main  # Ou master, dependendo do seu repositório
+
+# ============================================
+# Database - MongoDB Atlas (Recomendado)
+# ============================================
+# A Render não oferece MongoDB nativo
+# Use MongoDB Atlas (gratuito até 512MB)
+# 
+# Passos:
+# 1. Criar conta no MongoDB Atlas: https://www.mongodb.com/cloud/atlas
+# 2. Criar cluster gratuito (M0)
+# 3. Criar database user
+# 4. Whitelist IP: 0.0.0.0/0 (permitir todas IPs)
+# 5. Copiar connection string
+# 6. Adicionar no Render como variável MONGO_URL
+#
+# Formato da connection string:
+# mongodb+srv://<username>:<password>@cluster.mongodb.net/<database>?retryWrites=true&w=majority

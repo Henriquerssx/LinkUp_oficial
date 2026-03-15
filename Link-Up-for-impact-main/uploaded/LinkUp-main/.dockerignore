@@ -1,0 +1,66 @@
+# ============================================
+# .dockerignore - Arquivos a Ignorar no Build
+# ============================================
+
+# Node modules (será instalado no build)
+**/node_modules
+**/npm-debug.log
+**/yarn-error.log
+
+# Python
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.Python
+**/pip-log.txt
+**/pip-delete-this-directory.txt
+**/.venv
+**/venv/
+**/ENV/
+
+# Testes
+**/tests/
+**/test_reports/
+**/.pytest_cache/
+**/.coverage
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentação (não necessária no container)
+*.md
+!README.md
+
+# Logs
+**/*.log
+**/logs/
+
+# Environment files locais (usar variáveis da Render)
+**/.env.local
+**/.env.development
+**/.env.test
+
+# Build artifacts frontend (será gerado no build)
+**/frontend/build
+
+# Scripts de desenvolvimento
+**/scripts/
+
+# Outros
+.dockerignore
+docker-compose.yml
+Dockerfile.dev
