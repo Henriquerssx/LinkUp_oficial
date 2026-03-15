@@ -137,9 +137,15 @@ const NewDashboard = () => {
         
         <header style={{marginBottom: 'clamp(1.5rem, 4vw, 2.5rem)', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <div>
-            <h1 style={{fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans', fontWeight: 800, color: 'var(--texto-titulo)', marginBottom: '0.25rem'}}>
-              LinkUp
-            </h1>
+            <img 
+              src="/linkup_logo.svg" 
+              alt="LinkUp" 
+              style={{
+                width: 'clamp(120px, 35vw, 160px)', 
+                height: 'auto',
+                marginBottom: '0.5rem'
+              }} 
+            />
             <p style={{fontSize: 'clamp(0.875rem, 3vw, 1rem)', color: 'var(--texto-corpo)'}}>Olá, {user?.nome}</p>
           </div>
           <div style={{display: 'flex', gap: '0.5rem'}}>
