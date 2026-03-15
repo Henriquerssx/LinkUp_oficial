@@ -696,10 +696,37 @@ async def complete_mission(completion: MissionCompletion, current_user: dict = D
             {"$set": {"xp_atual": novo_xp}}
         )
     
-    # Update streak
+    # Update streak - check if mission was completed today
+    hoje = datetime.now(timezone.utc).date()
+    ultimo_acesso = datetime.fromisoformat(current_user["ultimo_acesso"]).date()
+    
+    # Get last evidence date to check streak
+    last_evidence = await db.evidences.find_one(
+        {"user_id": current_user["id"], "id": {"$ne": evidence_id}},
+        {"_id": 0, "data": 1},
+        sort=[("data", -1)]
+    )
+    
+    if last_evidence:
+        ultima_missao_data = datetime.fromisoformat(last_evidence["data"]).date()
+        dias_diferenca = (hoje - ultima_missao_data).days
+        
+        if dias_diferenca == 0:
+            # Mesma dia, não incrementa streak
+            novo_streak = current_user.get("streak", 0)
+        elif dias_diferenca == 1:
+            # Dia consecutivo, incrementa streak
+            novo_streak = current_user.get("streak", 0) + 1
+        else:
+            # Quebrou o streak, reinicia
+            novo_streak = 1
+    else:
+        # Primeira missão, streak = 1
+        novo_streak = 1
+    
     await db.users.update_one(
         {"id": current_user["id"]},
-        {"$inc": {"streak": 1}}
+        {"$set": {"streak": novo_streak, "ultimo_acesso": now}}
     )
     
     return {
