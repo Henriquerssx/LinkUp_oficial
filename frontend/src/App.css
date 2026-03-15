@@ -1,34 +1,334 @@
-.App-logo {
-    height: 40vmin;
+.App {
+  min-height: 100vh;
+  background: var(--fundo-base);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* IDENTIDADE LINKUP: Malha de Jornada (Fundo Vetorial) */
+.bg-linhas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
     pointer-events: none;
+    opacity: 0.8;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+.linha-fundo, .linha-media, .linha-frente {
+    fill: none;
+    stroke-linecap: round;
+    animation: respirar 14s ease-in-out infinite alternate;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
+.linha-fundo {
+    stroke: rgba(37, 99, 235, 0.03);
+    stroke-width: 15px;
+}
+
+.linha-media {
+    stroke: rgba(37, 99, 235, 0.05);
+    stroke-width: 6px;
+}
+
+.linha-frente {
+    stroke: rgba(37, 99, 235, 0.12);
+    stroke-width: 2px;
+}
+
+@keyframes respirar {
+    0% { transform: translateY(0px) scale(1) rotate(0deg); }
+    100% { transform: translateY(20px) scale(1.03) rotate(0.5deg); }
+}
+
+/* CARDS LINKUP */
+.card-solido {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card-solido:hover {
+    box-shadow: 0 15px 45px -10px rgba(15, 23, 42, 0.09);
+}
+
+.card-missao-real {
+    background: var(--azul-principal);
     color: white;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.App-link {
-    color: #61dafb;
+.card-missao-real::after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    bottom: -40px;
+    width: 200px;
+    height: 200px;
+    border: 30px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
+.card-missao-real::before {
+    content: '';
+    position: absolute;
+    right: 80px;
+    bottom: 20px;
+    width: 200px;
+    height: 200px;
+    border: 30px solid rgba(255,255,255,0.05);
+    border-radius: 50%;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tag-branca {
+    background: white;
+    color: var(--azul-principal);
+}
+
+.tag-azul {
+    background: var(--azul-claro);
+    color: var(--azul-escuro);
+}
+
+.diario-item {
+    background: #F8FAFC;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--azul-principal);
+}
+
+.progresso-container {
+    margin: 2rem 0;
+}
+
+.progresso-bg {
+    width: 100%;
+    height: 10px;
+    background: #F1F5F9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progresso-fill {
+    height: 100%;
+    background: var(--azul-principal);
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+.btn-primario {
+    background: white;
+    color: var(--azul-principal);
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: 'Inter';
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.evento-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.25rem;
+    border-left: 4px solid var(--azul-principal);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.evento-card:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+}
+
+.uni-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.uni-badge.usp {
+    background: #FEF3C7;
+    color: #92400E;
+}
+
+.uni-badge.inteli {
+    background: #DBEAFE;
+    color: #1E40AF;
+}
+
+.uni-badge.fgv {
+    background: #E0E7FF;
+    color: #3730A3;
+}
+
+.uni-badge.insper {
+    background: #FCE7F3;
+    color: #9F1239;
+}
+
+/* MOBILE - Layout em Coluna Simples */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr !important;
     }
-    to {
-        transform: rotate(360deg);
+    
+    .sidebar {
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+    }
+}
+
+/* MOBILE - Reduzir Informações */
+@media (max-width: 768px) {
+    .bg-linhas {
+        opacity: 0.4;
+    }
+    
+    .card-solido {
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+    
+    .card-missao-real {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .card-missao-real::after {
+        width: 120px;
+        height: 120px;
+        border-width: 20px;
+        right: -10px;
+        bottom: -30px;
+    }
+    
+    .card-missao-real::before {
+        width: 120px;
+        height: 120px;
+        border-width: 20px;
+        right: 50px;
+        bottom: 10px;
+    }
+    
+    .diario-item {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+    
+    .evento-card {
+        padding: 1rem;
+    }
+    
+    .uni-badge {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+    }
+    
+    /* Esconder progresso completo em mobile - mostrar apenas essencial */
+    .hide-mobile-detail {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-solido {
+        padding: 1rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px -10px rgba(15, 23, 42, 0.08);
+    }
+    
+    .card-missao-real {
+        padding: 1.25rem;
+    }
+    
+    .diario-item {
+        padding: 0.875rem;
+        border-left-width: 3px;
+        margin-top: 0.75rem;
+    }
+    
+    /* Simplificar ainda mais em telas pequenas */
+    .card-missao-real::after,
+    .card-missao-real::before {
+        display: none;
+    }
+}
+
+/* Tabs para organizar conteúdo mobile */
+.mobile-tabs {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-tabs {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+    
+    .mobile-tab {
+        padding: 0.5rem 1rem;
+        border-radius: 12px;
+        background: white;
+        border: 2px solid #E2E8F0;
+        font-weight: 600;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .mobile-tab.active {
+        background: var(--azul-principal);
+        color: white;
+        border-color: var(--azul-principal);
     }
 }

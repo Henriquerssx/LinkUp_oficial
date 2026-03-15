@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" width="520" height="160">
+  <defs>
+    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1C3557"/>
+      <stop offset="100%" style="stop-color:#2B6CB0"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2B6CB0"/>
+      <stop offset="100%" style="stop-color:#1C3557"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1C3557"/>
+      <stop offset="100%" style="stop-color:#2B6CB0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ══ SYMBOL ══ -->
+
+  <!-- Connecting arc — curves upward from left node to right node -->
+  <!-- Left node center: 68, 108 | Right node center: 148, 52 -->
+  <!-- Arc goes through apex point creating upward trajectory -->
+  <path d="M 68 108 C 68 40, 148 40, 148 52"
+        fill="none"
+        stroke="url(#arcGrad)"
+        stroke-width="7"
+        stroke-linecap="round"/>
+
+  <!-- Small upward arrow tip at right node arrival -->
+  <polyline points="136,60 148,46 160,60"
+            fill="none"
+            stroke="#2B6CB0"
+            stroke-width="7"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+
+  <!-- Left node — person / origin -->
+  <circle cx="68" cy="108" r="14"
+          fill="url(#nodeGrad1)"/>
+
+  <!-- Right node — connection / transformed -->
+  <circle cx="148" cy="52" r="14"
+          fill="url(#nodeGrad2)"/>
+
+  <!-- Inner dots — white — suggestion of people inside nodes -->
+  <circle cx="68" cy="108" r="5" fill="white" opacity="0.9"/>
+  <circle cx="148" cy="52" r="5" fill="white" opacity="0.9"/>
+
+  <!-- ══ WORDMARK ══ -->
+
+  <!-- "Link" — regular weight -->
+  <text x="188" y="102"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="58"
+        font-weight="400"
+        letter-spacing="-1"
+        fill="#1C3557">Link</text>
+
+  <!-- "Up" — bold, slightly lighter blue for contrast -->
+  <text x="312" y="102"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="58"
+        font-weight="700"
+        letter-spacing="-1"
+        fill="#2B6CB0">Up</text>
+
+  <!-- Tagline -->
+  <text x="189" y="128"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="13.5"
+        font-weight="400"
+        letter-spacing="3.5"
+        fill="#2B6CB0"
+        opacity="0.75">CONEXÃO HUMANA</text>
+
+</svg>
