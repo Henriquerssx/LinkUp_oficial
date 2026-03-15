@@ -143,10 +143,10 @@ const NewDashboard = () => {
               style={{
                 width: 'clamp(180px, 50vw, 240px)', 
                 height: 'auto',
-                marginBottom: '0.5rem'
+                marginBottom: '0.25rem'
               }} 
             />
-            <p style={{fontSize: 'clamp(0.875rem, 3vw, 1rem)', color: 'var(--texto-corpo)'}}>Olá, {user?.nome}</p>
+            <p style={{fontSize: 'clamp(0.875rem, 3vw, 1rem)', color: 'var(--texto-corpo)', marginTop: '0'}}>Olá, {user?.nome}</p>
           </div>
           <div style={{display: 'flex', gap: '0.5rem'}}>
             <button
