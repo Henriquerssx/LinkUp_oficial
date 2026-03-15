@@ -141,7 +141,7 @@ const NewDashboard = () => {
               src="/linkup_logo.svg" 
               alt="LinkUp" 
               style={{
-                width: 'clamp(120px, 35vw, 160px)', 
+                width: 'clamp(180px, 50vw, 240px)', 
                 height: 'auto',
                 marginBottom: '0.5rem'
               }} 
