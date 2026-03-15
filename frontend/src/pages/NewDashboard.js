@@ -146,7 +146,7 @@ const NewDashboard = () => {
                 marginBottom: '0.25rem'
               }} 
             />
-            <p style={{fontSize: 'clamp(0.875rem, 3vw, 1rem)', color: 'var(--texto-corpo)', marginTop: '0', paddingLeft: 'clamp(1rem, 3vw, 1.5rem)'}}>Olá, {user?.nome}</p>
+            <p style={{fontSize: 'clamp(0.875rem, 3vw, 1.25rem)', color: 'var(--texto-corpo)', marginTop: '0', paddingLeft: 'clamp(1rem, 3vw, 1.5rem)'}}>Olá, {user?.nome}</p>
           </div>
           <div style={{display: 'flex', gap: '0.5rem'}}>
             <button
